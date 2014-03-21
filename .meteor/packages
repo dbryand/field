@@ -7,9 +7,10 @@ standard-app-packages
 preserve-inputs
 accounts-base
 accounts-password
-router
 moment
 coffeescript
 bootstrap-3
 jquery
 accounts-ui-bootstrap-3
+profile
+iron-router

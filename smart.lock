@@ -5,7 +5,8 @@
       "router": {},
       "moment": {},
       "bootstrap-3": {},
-      "accounts-ui-bootstrap-3": {}
+      "accounts-ui-bootstrap-3": {},
+      "profile": {}
     },
     "packages": {
       "router": {
@@ -28,6 +29,11 @@
         "tag": "v0.2.6",
         "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
       },
+      "profile": {
+        "git": "https://github.com/BeDifferential/meteor-profile.git",
+        "tag": "v0.0.8",
+        "commit": "a79eed39b871d4c384b76d77b78e318eb2f300fd"
+      },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
         "tag": "v1.3.5",
@@ -37,6 +43,11 @@
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
         "tag": "v4.0.0",
         "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.6.2",
+        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
       }
     }
   }
