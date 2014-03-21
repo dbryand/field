@@ -1,5 +1,12 @@
-#Template.post.doYouLike = ->
-  #Likes.find(@_id).count()
+Template.post.rendered = ->
+
+  $(this.find('a[rel=tooltip]')).tooltip()
+
+  post = $(this.find(".post"))
+
+  random = Math.floor(Math.random() * 500)
+  post.css("top", "#{random}px")
+  post.css("left", "#{random}px")
 
 Template.post.likeCount = ->
   Likes.find(@_id).count()
@@ -7,15 +14,17 @@ Template.post.likeCount = ->
 Template.post.postComments = ->
   Posts.find parent: @_id
 
-Template.post.events "keyup .comment": (evt, tmpl) ->
-  if evt.which is 13
-    commenttext = tmpl.find(".comment").value
+Template.post.events =
+  "keyup .comment": (evt, tmpl) ->
+    if evt.which is 13
+      comment = tmpl.find(".comment")
 
-    Meteor.call "addPost",
-      text: commenttext
-      parent: @_id
-    $(".comment").val("").select().focus()
+      Meteor.call "addPost",
+        text: comment.value
+        parent: @_id
+      $(comment).val("").select().focus()
 
-Template.post.events "click .likebtn": (evt, tmpl) ->
-  Meteor.call "likePost",
-    post: @_id
+  "click .likebtn": (evt, tmpl) ->
+    console.log "liked"
+    Meteor.call "likePost",
+      post: @_id

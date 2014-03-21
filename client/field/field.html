@@ -1,11 +1,37 @@
 <template name="field">
-  <div class="well well-large">
-    <label for="posttext">Update Status</label>
-    <input placeholder="Whats on your mind ?" class="input-xxlarge posttext" type="text" name="posttext" value="" id="posttext">
-  </div>
-  <ul id="postList" class="unstyled">
+  <div id="field">
     {{#each posts}}
       {{>post}}
     {{/each}}
-  </ul>
+  </div>
+  <!--<div class="row">-->
+    <!--<div class="well well-large col-md-offset-6 col-md-5 col-pull-right">-->
+      <!--<input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">-->
+    <!--</div>-->
+  <!--</div>-->
+</template>
+
+<template name="post">
+  <div class="post" draggable="true">
+    <a href="#" rel="tooltip" title="first tooltip">hover over me</a>
+    <h5>{{text}}</h5>
+    <p class="small">By {{owner}}</p>
+    <div class="media">
+      {{#if likeCount}}<span class="badge badge-success">{{likeCount}}</span> People Like This{{/if}}
+      <h4><a class="likebtn muted"><small>Like</small></a></h4>
+      <ul class="list-unstyled">
+        {{#each postComments}}
+          {{>postcomment}}
+        {{/each}}
+      </ul>
+      <input class="comment input-xxlarge" type="text" name="comment" value="" placeholder="Write a comment..." id="comment">
+    </div>
+  </div>
+</template>
+
+<template name="postcomment">
+  <li class="well">
+    <p class="muted commentUser">{{owner}}</p>
+    <p class="muted commentText">{{text}}</p>
+  </li>
 </template>

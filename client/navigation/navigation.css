@@ -1,0 +1,9 @@
+#main-nav{
+  position: fixed;
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid #efefef;
+  width: 30em;
+  top: 1em;
+  left: 1em;
+}

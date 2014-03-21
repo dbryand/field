@@ -3,6 +3,9 @@ Router.map ->
     path: '/',
     template: 'splash'
 
+  @route 'field',
+    path: '/field'
+
   @route 'home',
     path: '/home'
 
