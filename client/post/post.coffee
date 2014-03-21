@@ -17,8 +17,5 @@ Template.post.events "keyup .comment": (evt, tmpl) ->
     $(".comment").val("").select().focus()
 
 Template.post.events "click .likebtn": (evt, tmpl) ->
-  debugger
-  Meteor.call "addPost",
-    text: commenttext
-    parent: @_id
-  $(".comment").val("").select().focus()
+  Meteor.call "likePost",
+    post: @_id

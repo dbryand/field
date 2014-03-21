@@ -1,12 +1,12 @@
 Router.map ->
   @route 'splash',
     path: '/',
-    template: 'splash',
+    template: 'splash'
     data: ->
       Meteor.user()
 
   @route 'home',
-    path: '/home',
+    path: '/home'
     data: ->
       Meteor.user()
 
@@ -15,3 +15,8 @@ Router.map ->
 
   @route 'events',
     path: '/events'
+
+  @route 'profile',
+    path: '/profile'
+    data: ->
+      Meteor.user()

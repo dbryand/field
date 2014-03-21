@@ -1,9 +1,9 @@
 {
   "packages": {
-    "router": {},
     "moment": {},
     "bootstrap-3": {},
     "accounts-ui-bootstrap-3": {},
-    "profile": {}
+    "profile": {},
+    "accounts-entry": {}
   }
 }
