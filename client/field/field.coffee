@@ -2,7 +2,6 @@ Template.field.rendered = ->
   Deps.autorun ->
     Meteor.subscribe "posts", Meteor.userId()
     Meteor.subscribe "likes"
-    Meteor.subscribe "appusers"
 
 Template.field.posts = ->
   Posts.find parent: null, { sort: { date: -1 } }

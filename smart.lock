@@ -4,9 +4,7 @@
     "basePackages": {
       "moment": {},
       "bootstrap-3": {},
-      "accounts-ui-bootstrap-3": {},
-      "profile": {},
-      "accounts-entry": {}
+      "accounts-ui-bootstrap-3": {}
     },
     "packages": {
       "moment": {
@@ -23,31 +21,6 @@
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
         "tag": "v0.2.6",
         "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
-      },
-      "profile": {
-        "git": "https://github.com/BeDifferential/meteor-profile.git",
-        "tag": "v0.0.8",
-        "commit": "a79eed39b871d4c384b76d77b78e318eb2f300fd"
-      },
-      "accounts-entry": {
-        "git": "https://github.com/BeDifferential/accounts-entry.git",
-        "tag": "v0.6.2",
-        "commit": "56c9b6c064cc0d92a97aa9b53a8f4da050f54c29"
-      },
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.2",
-        "commit": "ce56e58b45624dce992490f3a1c10f10d3948bae"
-      },
-      "just-i18n": {
-        "git": "https://github.com/subhog/meteor-just-i18n.git",
-        "tag": "v0.1.1",
-        "commit": "ce88ac66c0dc107dc2da93ce152616115838101f"
-      },
-      "accounts-t9n": {
-        "git": "https://github.com/softwarerero/meteor-accounts-t9n.git",
-        "tag": "v0.0.2",
-        "commit": "408e3a037114cb72163073110e2121e3d548c1a2"
       }
     }
   }

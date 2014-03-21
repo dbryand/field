@@ -2,8 +2,6 @@
   "packages": {
     "moment": {},
     "bootstrap-3": {},
-    "accounts-ui-bootstrap-3": {},
-    "profile": {},
-    "accounts-entry": {}
+    "accounts-ui-bootstrap-3": {}
   }
 }
