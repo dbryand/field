@@ -1,0 +1,15 @@
+<template name="navigation">
+  <div class="navbar navbar-static-top navbar-inverse">
+      <div class="navbar-inner">
+          <a class="brand" href="/">Fakebook</a>
+          <ul class="nav">
+              <li><a href="/">Message Board</a></li>
+          </ul>
+          {{#if currentUser}}
+          <div class="span2" style="display:none">
+            {{>sidebar}}
+          </div>
+          {{/if}}
+      </div>
+  </div>
+</template>
