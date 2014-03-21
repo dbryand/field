@@ -8,14 +8,13 @@ Meteor.publish "appusers", ->
   Meteor.users.find()
 
 Meteor.methods
-  
   #{text:'',owner:'',date:'',parent:''}
   addPost: (options) ->
     post =
-      text: options.text
-      owner: Meteor.userId()
-      date: new Date()
-      parent: options.parent
+      text:    options.text
+      owner:   Meteor.userId()
+      date:    new Date()
+      parent:  options.parent
 
     Posts.insert post
 

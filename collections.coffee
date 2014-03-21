@@ -1,2 +1,2 @@
-Posts = new Meteor.Collection('posts')
-Likes = new Meteor.Collection('likes')
+@Posts = new Meteor.Collection('posts')
+@Likes = new Meteor.Collection('likes')

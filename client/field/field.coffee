@@ -1,13 +1,13 @@
-Template.home.rendered = ->
+Template.field.rendered = ->
   Deps.autorun ->
     Meteor.subscribe "posts", Meteor.userId()
     Meteor.subscribe "likes"
     Meteor.subscribe "appusers"
 
-Template.home.posts = ->
+Template.field.posts = ->
   Posts.find parent: null, { sort: { date: -1 } }
 
-Template.home.events "keyup .posttext": (evt, tmpl) ->
+Template.field.events "keyup .posttext": (evt, tmpl) ->
   if evt.which is 13
     posttext = tmpl.find(".posttext").value
     options =
