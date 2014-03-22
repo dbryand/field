@@ -4,11 +4,21 @@
       {{>post}}
     {{/each}}
   </div>
-  <!--<div class="row">-->
-    <!--<div class="well well-large col-md-offset-6 col-md-5 col-pull-right">-->
-      <!--<input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">-->
-    <!--</div>-->
-  <!--</div>-->
+  <div class="row">
+    <div class="well well-large col-md-offset-6 col-md-5 col-pull-right">
+      <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">
+      <br>
+      {{>uploader}}
+    </div>
+  </div>
+</template>
+
+<template name="uploader">
+  <div>
+    <input type="file" id="files" name="files[]" multiple />
+  </div>
+  <div id="progress_bar"><div class="percent">0%</div></div>
+  <span id="status"></span>
 </template>
 
 <template name="post">

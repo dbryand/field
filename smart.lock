@@ -4,7 +4,8 @@
     "basePackages": {
       "moment": {},
       "bootstrap-3": {},
-      "accounts-ui-bootstrap-3": {}
+      "accounts-ui-bootstrap-3": {},
+      "aws-sdk": {}
     },
     "packages": {
       "moment": {
@@ -21,6 +22,16 @@
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
         "tag": "v0.2.6",
         "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
+      },
+      "aws-sdk": {
+        "git": "https://github.com/peerlibrary/meteor-aws-sdk.git",
+        "tag": "v1.5.1.1",
+        "commit": "63efa4ebbe9986bd875f69d5fdf3248c5c44159e"
+      },
+      "blocking": {
+        "git": "https://github.com/peerlibrary/meteor-blocking.git",
+        "tag": "v0.4.0",
+        "commit": "e25a0be72e771b317b26d2bb5758c983bdcef23c"
       }
     }
   }

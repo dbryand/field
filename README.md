@@ -11,5 +11,6 @@
      # Start the node inspector in another terminal window
      node-inspector
 
-     # Open Chrome and navigate to: http://localhost:8080/debug?port=5858
+     # Open Chrome and navigate to:
+     # http://localhost:8080/debug?port=5858
      # Debug like in browser

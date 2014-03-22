@@ -5,8 +5,9 @@ Template.post.rendered = ->
   post = $(this.find(".post"))
 
   random = Math.floor(Math.random() * 500)
+  random2 = Math.floor(Math.random() * 840)
   post.css("top", "#{random}px")
-  post.css("left", "#{random}px")
+  post.css("left", "#{random2}px")
 
 Template.post.likeCount = ->
   Likes.find(@_id).count()
@@ -25,6 +26,5 @@ Template.post.events =
       $(comment).val("").select().focus()
 
   "click .likebtn": (evt, tmpl) ->
-    console.log "liked"
     Meteor.call "likePost",
       post: @_id

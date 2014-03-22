@@ -17,3 +17,6 @@ Meteor.methods
 
   removeAllPosts: ->
     Posts.remove {}
+
+  likePost: (options) ->
+    console.log "liked"
