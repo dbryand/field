@@ -4,6 +4,17 @@ Template.app.rendered = ->
     e.preventDefault()
     $("body").addClass('dragover')
 
+  $("body").on "paste", (e, ui) ->
+    e.stopPropagation()
+    e.preventDefault()
+    item = e.originalEvent.clipboardData.items[0]
+    if item.kind == "file"
+      item = item.getAsFile()
+      item.name = "paste"
+      files = [item]
+    handleFileSelect files
+    return false
+
   $("html").on "drop", (e, ui) ->
     e.stopPropagation()
     e.preventDefault()
