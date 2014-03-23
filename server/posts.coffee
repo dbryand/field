@@ -2,7 +2,6 @@ Meteor.publish "posts", (userid) ->
   Posts.find {}
 
 Meteor.methods
-  #{text:'',owner:'',date:'',parent:''}
   addPost: (options) ->
     post =
       text:    options.text

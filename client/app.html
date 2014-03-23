@@ -3,6 +3,10 @@
 </head>
 
 <body>
-  {{>navigation}}
-  {{renderPage}}
+  {{>app}}
 </body>
+
+<template name="app">
+  {{>navigation}}
+  {{layout}}
+</template>
