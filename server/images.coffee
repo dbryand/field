@@ -1,5 +1,6 @@
-Meteor.publish "images", (userid) ->
-  Images.find {}
+Meteor.publish "images", (userId) ->
+  Images.find
+    owner: userId
 
 Meteor.methods
   addImage: (options) ->

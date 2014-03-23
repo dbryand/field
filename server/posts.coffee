@@ -1,5 +1,6 @@
-Meteor.publish "posts", (userid) ->
-  Posts.find {}
+Meteor.publish "posts", (userId) ->
+  Posts.find
+    owner: userId
 
 Meteor.methods
   addPost: (options) ->
