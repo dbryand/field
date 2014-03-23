@@ -2,26 +2,39 @@ Template.app.rendered = ->
   $("html").on "dragover", (e, ui) ->
     e.stopPropagation()
     e.preventDefault()
-    $("body").addClass('dragover')
+    if isFileDragEvent(e)
+      $("body").addClass('dragover')
 
-  $("body").on "paste", (e, ui) ->
+  $("html").on "paste drop", (e, ui) ->
     e.stopPropagation()
     e.preventDefault()
-    item = e.originalEvent.clipboardData.items[0]
-    if item.kind == "file"
-      item = item.getAsFile()
-      item.name = "paste"
-      files = [item]
-    handleFileSelect files
-    return false
-
-  $("html").on "drop", (e, ui) ->
-    e.stopPropagation()
-    e.preventDefault()
+    files = getFilesFromEvent(e)
     $("body").removeClass('dragover')
-    files = e.originalEvent.dataTransfer.files
-    handleFileSelect files
+    if files[0]
+      handleFileSelect files
     return false
+
+  #$("html").on "drop", (e, ui) ->
+    #e.stopPropagation()
+    #e.preventDefault()
+    #debugger
+    #$("body").removeClass('dragover')
+    #files = e.originalEvent.dataTransfer.files
+    #handleFileSelect files
+    #return false
+
+isFileDragEvent = (e) ->
+  !!e.originalEvent.dataTransfer.items.length
+
+getFilesFromEvent = (e) ->
+  # Paste image
+  paste = e.originalEvent.clipboardData
+  if paste && item = paste.items[0]
+    if item.kind == "file"
+      item      = item.getAsFile()
+      item.name = "paste"
+      files     = [item]
+  files = e.originalEvent.dataTransfer.files
 
 handleFileSelect = (files) ->
   setProgress 0, "Upload started."
