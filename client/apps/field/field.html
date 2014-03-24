@@ -1,24 +1,18 @@
 <template name="field">
-  <div id="field">
-    {{#each posts}}
-      {{>post}}
-    {{/each}}
-    {{#each images}}
-      {{>image}}
-    {{/each}}
-  </div>
-  <div class="row">
-    <div class="well well-large col-md-offset-6 col-md-5 col-pull-right">
-      <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">
-      <br>
-      {{>uploader}}
+  {{#with field}}
+    <h1 class="text-right">{{name}}</h1>
+    <div id="field">
+      {{#each posts}}
+        {{>post}}
+      {{/each}}
+      {{#each images}}
+        {{>image}}
+      {{/each}}
     </div>
-  </div>
-</template>
-
-<template name="uploader">
-  <div id="uploader">
-    <span class="percent"></span>
-    <span id="status"></span>
-  </div>
+    <div class="row">
+      <div class="well well-large col-md-offset-6 col-md-5 col-pull-right">
+        <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">
+      </div>
+    </div>
+  {{/with}}
 </template>

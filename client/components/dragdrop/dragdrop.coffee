@@ -42,11 +42,15 @@ handleFileSelect = (files) ->
   for file in files
     uploadFile file
 
+progressElement = ->
+  progress = $(".upload-progress")
+  unless progress.length
+    progress = $('<div class="upload-progress">Uploading...</div>').appendTo("body")
+  progress
+
 setProgress = (percent, statusLabel) ->
-  progress = document.querySelector(".percent")
-  progress.style.width = percent + "%"
-  progress.textContent = percent + "%"
-  document.getElementById("status").innerText = statusLabel
+  p = progressElement()
+  p.text(percent + "% " + statusLabel)
 
 uploadFile = (file) ->
   executeOnSignedUrl file, (signedURL) ->
@@ -94,7 +98,9 @@ createCORSRequest = (method, url) ->
   xhr
 
 onUploadSuccess = (file, url) ->
-  Meteor.call "addImage",
+  progressElement().remove()
+
+  Meteor.call "addImage", Session.get('currentFieldId'),
     url: url
     size: file.size
     name: file.name

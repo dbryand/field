@@ -1,22 +1,18 @@
-Meteor.publish "posts", (userId) ->
+Meteor.publish "fieldPosts", (fieldId) ->
+  check(fieldId, String)
+
   Posts.find
-    owner: userId
+    fieldId: fieldId
 
 Meteor.methods
-  addPost: (options) ->
+  addPost: (fieldId, options) ->
     post =
-      text:    options.text
-      owner:   Meteor.userId()
-      date:    new Date()
-      parent:  options.parent
+      userId:   Meteor.userId()
+      fieldId:  Fields.findOne(fieldId)
+      text:     options.text
+      date:     new Date()
 
     Posts.insert post
 
   removePost: (id) ->
     Posts.remove _id: id
-
-  removeAllPosts: ->
-    Posts.remove {}
-
-  likePost: (options) ->
-    console.log "liked"

@@ -1,14 +1,26 @@
-Template.field.rendered = ->
-  Deps.autorun ->
-    Meteor.subscribe "posts", Meteor.userId()
-    Meteor.subscribe "images", Meteor.userId()
-    Meteor.subscribe "likes"
+FieldController = FastRender.RouteController.extend
+  waitOn: ->
+    [
+      Meteor.subscribe "fieldByToken", @params.token,
+      Meteor.subscribe "fieldPosts", Session.get('current:field'),
+      Meteor.subscribe "fieldImages", Session.get('current:field')
+    ]
 
-Template.field.posts = ->
-  Posts.find parent: null, { sort: { date: -1 } }
+  data: ->
+    if field = Fields.findOne(token: @params.token)
+      Session.set('current:field', field._id)
 
-Template.field.images = ->
-  Images.find {}, { sort: { date: -1 } }
+      field:  field
+      posts:  Posts.find fieldId: field._id
+      images: Images.find fieldId: field._id
+
+  unload: ->
+    delete Session.keys['current:field']
+
+Router.map ->
+  @route 'field',
+    path: '/f/:token'
+    controller: FieldController
 
 Template.field.events
   "keyup #posttext": (evt, tmpl) ->
@@ -17,6 +29,5 @@ Template.field.events
 
       Meteor.call "addPost",
         text: posttext.value
-        parent: null
 
       $(post).val("").select().focus()

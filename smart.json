@@ -3,6 +3,7 @@
     "moment": {},
     "bootstrap-3": {},
     "accounts-ui-bootstrap-3": {},
-    "aws-sdk": {}
+    "aws-sdk": {},
+    "fast-render": {}
   }
 }

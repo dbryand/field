@@ -1,22 +1,16 @@
-Meteor.publish "fields", (userId) ->
-  Fields.find
-    owner: userId
+Meteor.publish "fieldByToken", (token) ->
+  Fields.findOne token: token
+
+Meteor.publish "fieldsForUser", (userId) ->
+  Fields.find userId: userId
 
 Meteor.methods
   addField: (options={}) ->
-    # Move this at some point...
-    chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz"
-    token = ""
-
-    while token.length < 8
-      rnum = Math.floor(Math.random() * chars.length)
-      token += chars.substring(rnum, rnum + 1)
-
     field =
-      owner: Meteor.userId()
+      userId: Meteor.userId()
       date:  new Date()
-      name:  options.name || "Untitled"
-      token: token
+      name:  options.name || "Untitled - #{(new Date()).getTime()}"
+      token: makeToken()
 
     Fields.insert field
 

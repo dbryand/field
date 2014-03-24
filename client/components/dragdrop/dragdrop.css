@@ -1,3 +1,15 @@
 body.dragover{
   background: #ccc
 }
+
+.upload-progress{
+  width: 150px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: gray;
+  color: #fff;
+  font-size: 10px;
+  padding-left: 5px;
+}
