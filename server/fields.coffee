@@ -16,7 +16,8 @@ Meteor.methods
       name:  options.name || "Untitled - #{(new Date()).getTime()}"
       token: makeToken()
 
-    Fields.insert field
+    id = Fields.insert field
+    Fields.findOne _id: id
 
   removeField: (id) ->
     Fields.remove _id: id

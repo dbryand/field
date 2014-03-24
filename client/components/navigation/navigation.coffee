@@ -9,5 +9,6 @@ Template.navigation.events =
   "click .new-field": (e, tmpl) ->
     comment = tmpl.find(".comment")
 
-    Meteor.call "addField"
-    # TODO: How do i redirect to the new field page?
+    Meteor.call "addField", (err, data) ->
+      Router.go 'field',
+        token: data.token
