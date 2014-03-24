@@ -1,10 +1,6 @@
 FieldController = FastRender.RouteController.extend
   waitOn: ->
-    [
-      Meteor.subscribe "fieldByToken", @params.token,
-      Meteor.subscribe "fieldPosts", Session.get('current:field'),
-      Meteor.subscribe "fieldImages", Session.get('current:field')
-    ]
+    Meteor.subscribe "fieldByToken", @params.token,
 
   load: ->
     if field = Fields.findOne(token: @params.token)
@@ -37,3 +33,17 @@ Template.field.events
         text: post.value
 
       $(post).val("").select().focus()
+
+Template.field.rendered = ->
+  name = @find(".editable:not(.editable-click)")
+
+  $(name).editable("destroy").editable
+    success: (response, newValue) ->
+      # TODO: Make sure I want to be issuing queries from here...
+      Fields.update Session.get('current:field'),
+        $set:
+          name: newValue
+
+  Deps.autorun ->
+    Meteor.subscribe "fieldPosts", Session.get('current:field'),
+    Meteor.subscribe "fieldImages", Session.get('current:field')

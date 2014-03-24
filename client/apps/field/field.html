@@ -1,8 +1,12 @@
 <template name="field">
-  {{#with field}}
-    <h1 class="text-right">{{name}}</h1>
-  {{/with}}
   <div id="field">
+    {{#with field}}
+      <h1 class="name-editable editable"
+      data-type="text"
+      data-placeholder="{{name}}"
+      data-emptytext="Click to enter text"
+      data-rows="4">{{name}}</h1>
+    {{/with}}
     {{#each posts}}
       {{> post}}
     {{/each}}

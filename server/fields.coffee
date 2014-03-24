@@ -13,7 +13,7 @@ Meteor.methods
     field =
       userId: Meteor.userId()
       date:  new Date()
-      name:  options.name || "Untitled - #{(new Date()).getTime()}"
+      name:  options.name || "Untitled - #{moment(new Date()).format("MMMM Do, h:mm:ss a")}"
       token: makeToken()
 
     id = Fields.insert field
