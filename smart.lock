@@ -6,7 +6,8 @@
       "bootstrap-3": {},
       "accounts-ui-bootstrap-3": {},
       "aws-sdk": {},
-      "fast-render": {}
+      "fast-render": {},
+      "scss": {}
     },
     "packages": {
       "moment": {
@@ -33,6 +34,11 @@
         "git": "https://github.com/arunoda/meteor-fast-render.git",
         "tag": "v0.1.19",
         "commit": "9e9a34e51885474c0dd9ed7a64dbff7ee9d4315c"
+      },
+      "scss": {
+        "git": "https://github.com/fourseven/meteor-scss.git",
+        "tag": "v0.8.3",
+        "commit": "84fa8b09766e85a9e85b5606903f4222b7dd7605"
       },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",

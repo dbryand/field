@@ -1,4 +1,4 @@
-Template.main.rendered = ->
+Meteor.startup ->
   $("html").on "dragover", (e, ui) ->
     e.stopPropagation()
     e.preventDefault()
@@ -14,15 +14,6 @@ Template.main.rendered = ->
       handleFileSelect files
     return false
 
-  #$("html").on "drop", (e, ui) ->
-    #e.stopPropagation()
-    #e.preventDefault()
-    #debugger
-    #$("body").removeClass('dragover')
-    #files = e.originalEvent.dataTransfer.files
-    #handleFileSelect files
-    #return false
-
 isFileDragEvent = (e) ->
   !!e.originalEvent.dataTransfer.items.length
 
@@ -33,12 +24,13 @@ getFilesFromEvent = (e) ->
     if item.kind == "file"
       item      = item.getAsFile()
       item.name = "paste"
-      files     = [item]
+      return files     = [item]
   files = e.originalEvent.dataTransfer.files
 
 handleFileSelect = (files) ->
   setProgress 0, "Upload started."
 
+  debugger
   for file in files
     uploadFile file
 
@@ -100,6 +92,7 @@ createCORSRequest = (method, url) ->
 onUploadSuccess = (file, url) ->
   progressElement().remove()
 
+  # TODO: This is too incestuous...
   Meteor.call "addImage", Session.get('current:field'),
     url: url
     size: file.size
