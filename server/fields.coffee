@@ -9,7 +9,7 @@ Meteor.publish "fieldsForUser", (userId) ->
   Fields.find userId: userId
 
 Meteor.methods
-  addField: (options={}) ->
+  'field:create': (options={}) ->
     field =
       userId: Meteor.userId()
       date:  new Date()
@@ -19,5 +19,15 @@ Meteor.methods
     id = Fields.insert field
     Fields.findOne _id: id
 
-  removeField: (id) ->
+  'field:trash': (id) ->
+    Fields.update id,
+      $set:
+        trashed_at: new Date()
+
+  'field:untrash': (id) ->
+    Fields.update id,
+      $set:
+        trashed_at: null
+
+  'field:delete': (id) ->
     Fields.remove _id: id

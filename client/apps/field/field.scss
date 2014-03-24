@@ -1,6 +1,30 @@
 #field{
-  h1{
+  .name-editable{
+    position: absolute;
+    top: 1em;
+    left: 1em;
     font-size: 120%;
     margin: 0;
+  }
+  .close{
+    position: absolute;
+    top: 0;
+    right: .25em;
+    font-size: 300%;
+    font-weight: normal;
+  }
+  .trash{
+    position: absolute;
+    bottom: .5em;
+    right: 1em;
+    font-size: 150%;
+    font-weight: normal;
+    color: #ccc;
+  }
+  #create-post{
+    position:absolute;
+    bottom: 1em;
+    left: 1em;
+    width: 40em;
   }
 }

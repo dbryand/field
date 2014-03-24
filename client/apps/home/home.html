@@ -1,12 +1,19 @@
 <template name="home">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <h1>Welcome Home</h1>
-      <ul class="list-unstyled">
-        {{#each fields}}
-          {{>fields-nav}}
-        {{/each}}
-      </ul>
+  <div class="home">
+    {{> navigation}}
+    <div class="row">
+      <div class="field col-sm-4">
+        <a class="button new-field">+ New</a>
+      </div>
+      {{#each fields}}
+        {{> fields-nav}}
+      {{/each}}
     </div>
+  </div>
+</template>
+
+<template name="fields-nav">
+  <div class="field col-sm-4">
+    <a href="{{pathFor 'field'}}">{{name}}</a>
   </div>
 </template>

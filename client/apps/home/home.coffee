@@ -6,6 +6,12 @@ Router.map ->
   @route 'home',
     path: '/'
     controller: HomeController
-    
+
 Template.home.fields = ->
   Fields.find {}
+
+Template.home.events =
+  "click .new-field": (e, tmpl) ->
+    Meteor.call "field:create", (err, data) ->
+      Router.go 'field',
+        token: data.token

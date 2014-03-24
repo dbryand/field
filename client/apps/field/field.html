@@ -1,25 +1,47 @@
 <template name="field">
+<div id="field">
   <div class="row">
-  <div id="field">
-    {{#with field}}
-      <div class="col-sm-4 col-sm-offset-8">
-        <h1 class="name-editable editable" data-type="text">{{name}}</h1>
-      </div>
-    {{/with}}
-    {{#each posts}}
-      {{> post}}
-    {{/each}}
-    {{#each images}}
-      {{> image}}
-    {{/each}}
-  </div>
-  <div class="row">
-    <br>
-    <br>
-    <br>
-    <div class="well well-large col-md-5 col-pull-right">
-      <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">
+      {{#with field}}
+        {{#if visible}}
+          <h1 class="name-editable editable" data-type="text">{{name}}</h1>
+
+          {{#each posts}}
+            {{> post}}
+          {{/each}}
+
+          {{#each images}}
+            {{> image}}
+          {{/each}}
+
+          {{> createPost}}
+          {{> trashField}}
+        {{else}}
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <h2 class="_text-center">{{name}}</h2>
+              This Field is in the trash.<br>
+              {{> untrashField}}
+            </h2>
+          </div>
+        {{/if}}
+
+        {{> closeField}}
+      {{/with}}
     </div>
-  </div>
-  </div>
+</div>
+</template>
+
+<template name="createPost">
+  <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="create-post">
+</template>
+
+<template name="closeField">
+  <button type="button" class="close">&times;</button>
+</template>
+
+<template name="trashField">
+  <a href="#" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+</template>
+
+<template name="untrashField">
+  <a href="#" class="untrash">Restore it.</a>
 </template>
