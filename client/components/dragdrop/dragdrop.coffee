@@ -1,4 +1,4 @@
-Template.app.rendered = ->
+Template.main.rendered = ->
   $("html").on "dragover", (e, ui) ->
     e.stopPropagation()
     e.preventDefault()

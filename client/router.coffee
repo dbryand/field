@@ -3,8 +3,8 @@ Router.map ->
     path: '/',
     template: 'splash'
 
-  @route 'field',
-    path: '/field'
+  @route 'fieldShow',
+    path: '/f/:token'
 
   @route 'home',
     path: '/home'
