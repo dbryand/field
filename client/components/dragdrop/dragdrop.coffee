@@ -30,7 +30,6 @@ getFilesFromEvent = (e) ->
 handleFileSelect = (files) ->
   setProgress 0, "Upload started."
 
-  debugger
   for file in files
     uploadFile file
 

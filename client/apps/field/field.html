@@ -1,9 +1,9 @@
 <template name="field">
+  <div class="row">
   <div id="field">
     {{#with field}}
-      <div class="field-name">
-        <h1 class="name-editable editable"
-        data-type="text">{{name}}</h1>
+      <div class="col-sm-4 col-sm-offset-8">
+        <h1 class="name-editable editable" data-type="text">{{name}}</h1>
       </div>
     {{/with}}
     {{#each posts}}
@@ -20,5 +20,6 @@
     <div class="well well-large col-md-5 col-pull-right">
       <input placeholder="Whats on your mind ?" class="form-control" type="text" name="posttext" value="" id="posttext">
     </div>
+  </div>
   </div>
 </template>

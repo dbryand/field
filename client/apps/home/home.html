@@ -1,7 +1,12 @@
 <template name="home">
-  <br><br><br><br>
-  <h1>Welcome Home</h1>
-  {{#each fields}}
-    {{>fields-nav}}
-  {{/each}}
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Welcome Home</h1>
+      <ul class="list-unstyled">
+        {{#each fields}}
+          {{>fields-nav}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </template>
