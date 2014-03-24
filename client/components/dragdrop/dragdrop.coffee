@@ -100,7 +100,7 @@ createCORSRequest = (method, url) ->
 onUploadSuccess = (file, url) ->
   progressElement().remove()
 
-  Meteor.call "addImage", Session.get('currentFieldId'),
+  Meteor.call "addImage", Session.get('current:field'),
     url: url
     size: file.size
     name: file.name

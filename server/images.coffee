@@ -1,14 +1,13 @@
-#Meteor.publish "fieldImages", (fieldId) ->
-  #check(fieldId, String)
+Meteor.publish "fieldImages", (fieldId) ->
+  check(fieldId, String)
 
-  #Images.find
-    #fieldId: fieldId
+  Images.find fieldId: fieldId
 
 Meteor.methods
   addImage: (fieldId, options={}) ->
     image =
       userId: Meteor.userId()
-      fieldId: Fields.findOne(fieldId)
+      fieldId: fieldId
       date:  new Date()
       url:   options.url
       size:  options.size

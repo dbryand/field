@@ -1,7 +1,11 @@
 Meteor.publish "fieldByToken", (token) ->
-  Fields.findOne token: token
+  check(token, String)
+
+  Fields.find token: token
 
 Meteor.publish "fieldsForUser", (userId) ->
+  check(userId, String)
+
   Fields.find userId: userId
 
 Meteor.methods
@@ -16,4 +20,3 @@ Meteor.methods
 
   removeField: (id) ->
     Fields.remove _id: id
-

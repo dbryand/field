@@ -6,13 +6,9 @@ FieldController = FastRender.RouteController.extend
       Meteor.subscribe "fieldImages", Session.get('current:field')
     ]
 
-  data: ->
+  load: ->
     if field = Fields.findOne(token: @params.token)
       Session.set('current:field', field._id)
-
-      field:  field
-      posts:  Posts.find fieldId: field._id
-      images: Images.find fieldId: field._id
 
   unload: ->
     delete Session.keys['current:field']
@@ -22,12 +18,22 @@ Router.map ->
     path: '/f/:token'
     controller: FieldController
 
+Template.field.helpers
+  field: ->
+    Fields.findOne _id: Session.get('current:field')
+
+  posts: ->
+    Posts.find fieldId: Session.get('current:field')
+
+  images: ->
+    Images.find fieldId: Session.get('current:field')
+
 Template.field.events
   "keyup #posttext": (evt, tmpl) ->
     if evt.which is 13
       post = tmpl.find("#posttext")
 
-      Meteor.call "addPost",
-        text: posttext.value
+      Meteor.call "addPost", Session.get('current:field'),
+        text: post.value
 
       $(post).val("").select().focus()
