@@ -1,8 +1,3 @@
-Template.post.events
-  "mouseover .post, touchstart .post": (e) ->
-    ele = $(e.currentTarget)
-    FieldPositioner.enableFieldDraggable ele
-
 Template.post.rendered = ->
   unless @_rendered
     @_rendered = true
@@ -11,3 +6,8 @@ Template.post.rendered = ->
     canvas = $(Session.get("field:canvas"))
 
     FieldPositioner.centerElement ele, canvas
+
+Template.post.events
+  "mouseover .post, touchstart .post": (e) ->
+    ele = $(e.currentTarget)
+    FieldPositioner.enableFieldDraggable ele, @

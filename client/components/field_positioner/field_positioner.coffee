@@ -18,12 +18,18 @@
     element.css "left", offset.left
     element.css "top", offset.top
 
-  # TODO: put this somewhere better
+  repositionElement: (element, offsets) ->
+    top = parseInt element.css("top"), 10
+    left = parseInt element.css("left"), 10
+
+    element.css "left", top + offsets.left + "px"
+    element.css "top", left + offsets.top + "px"
+
   enableFieldDraggable: (ele) ->
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
+        addClasses:   false
         distance:     10
         containment:  "parent"
         opacity:      .8
         stack:        ".field-item"
-

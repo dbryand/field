@@ -14,3 +14,8 @@ Fields.allow
   insert: -> true,
   update: -> true,
   remove: -> true
+
+Images.allow
+  insert: -> true,
+  update: -> true,
+  remove: -> true
