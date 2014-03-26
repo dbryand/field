@@ -19,3 +19,8 @@ Images.allow
   insert: -> true,
   update: -> true,
   remove: -> true
+
+Posts.allow
+  insert: -> true,
+  update: -> true,
+  remove: -> true

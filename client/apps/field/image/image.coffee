@@ -1,27 +1,14 @@
 Template.image.rendered = ->
-  unless @_rendered
-    @_rendered = true
-
-    ele = $(@firstNode)
-    canvas = $(Session.get("field:canvas"))
-
-    FieldPositioner.centerElement ele, canvas
-    FieldPositioner.repositionElement ele, @data.ui
+  @canvas = $(Session.get("field:canvas"))
+  @ele = $(@firstNode)
+  FieldPositioner.positionElement [@data.positionX, @data.positionY], @ele, @canvas
 
 Template.image.events =
-  "mouseover .image, touchstart .image": (e) ->
+  "mouseover .field-image": (e) ->
     ele = $(e.currentTarget)
     FieldPositioner.enableFieldDraggable ele
-
-    ele.on "dragstop", (e, ui) =>
-      start = ui.originalPosition
-      stop  = ui.position
-
-      left = stop.left - start.left
-      top  = stop.top - start.top
-
+    FieldPositioner.onFieldItemDragstop ele, (position) =>
       Images.update @_id,
-        $set:
-          ui:
-            top:  top
-            left: left
+        $inc:
+          positionX: position[0]
+          positionY: position[1]

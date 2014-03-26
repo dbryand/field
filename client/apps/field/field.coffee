@@ -56,12 +56,12 @@ Template.fieldCanvas.events
 Template.fieldCanvas.rendered = ->
   unless @_rendered
     @_rendered = true
-
     # Center canvas
-    ele = $(@firstNode)
-    FieldPositioner.centerElement ele, window
+    element = $(@firstNode)
+    container = $(window)
+    FieldPositioner.positionElement [0, 0], element, container
 
-    Session.set("field:canvas", "#" + ele.attr("id"))
+    Session.set("field:canvas", "#" + element.attr("id"))
 
   Deps.autorun ->
     Meteor.subscribe "fieldPosts", Session.get('current:field'),

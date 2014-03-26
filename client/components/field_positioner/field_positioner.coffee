@@ -1,35 +1,44 @@
+# * Position: an [x, y] representing the placement of the center point of an element
+# relative to the center point of another element. Usually, this will be the
+# center point of the field-canvas.
+#   * So, [-100, 50] means that the center point of this element should be placed
+#     100px left of the center point, and 50px above the center point of the
+#     container.
 @FieldPositioner =
-  getCenterOffsets: (element, parent) ->
-    element = $(element)
-    parent  = $(parent)
+  getCenterOfElement: (element) ->
+    elementW = $(element).outerWidth()
+    elementH = $(element).outerHeight()
 
-    elementW = element.width()
-    elementH = element.height()
+    [elementW/2, elementH/2]
 
-    parentW = parent.width()
-    parentH = parent.height()
+  # position: [x, y] of center point offset.
+  # element: The element to be positioned.
+  # container: The containter in which the element will be positioned.
+  positionElement: (position, element, container) ->
+    elementCenter   = @getCenterOfElement element
+    containerCenter = @getCenterOfElement container
 
-    left: (-1*elementW/2)+(parentW/2)
-    top: (-1*elementH/2)+(parentH/2)
+    left = containerCenter[0] + position[0] - elementCenter[0]
+    top = containerCenter[1] + position[1] - elementCenter[1]
 
-  centerElement: (element, parent) ->
-    offset = @getCenterOffsets element, parent
-
-    element.css "left", offset.left
-    element.css "top", offset.top
-
-  repositionElement: (element, offsets) ->
-    top = parseInt element.css("top"), 10
-    left = parseInt element.css("left"), 10
-
-    element.css "left", top + offsets.left + "px"
-    element.css "top", left + offsets.top + "px"
+    element.css "left", left + "px"
+    element.css "top", top + "px"
 
   enableFieldDraggable: (ele) ->
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
         addClasses:   false
-        distance:     10
         containment:  "parent"
         opacity:      .8
-        stack:        ".field-item"
+
+  onFieldItemDragstop: (ele, callback) ->
+    unless ele.data("hasDragstop")
+      ele.data("hasDragstop", true).on "dragstop", (e, ui) ->
+        console.log "drop"
+        start = ui.originalPosition
+        stop  = ui.position
+
+        left = stop.left - start.left
+        top  = stop.top - start.top
+
+        callback [left, top]
