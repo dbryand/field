@@ -46,25 +46,22 @@ Template.fieldCanvas.helpers
 Template.fieldCanvas.events
   "mouseover #field-canvas, touchstart #field-canvas": (e) ->
     ele = $(e.currentTarget)
+
     unless ele.data("isDraggable")
-      ele.data("isDraggable", true).draggable
-        distance: 3
+      ele.data('isDraggable', true).draggable
         cursor: "pointer"
+        distance: 10
+    else
 
 Template.fieldCanvas.rendered = ->
   unless @_rendered
     @_rendered = true
-    # Center Field
+
+    # Center canvas
     ele = $(@firstNode)
+    FieldPositioner.centerElement ele, window
 
-    width  = ele.width()
-    height = ele.height()
-
-    viewWidth = window.innerWidth
-    viewHeight = window.innerHeight
-
-    ele.css 'left', (-1*width/2)+(viewWidth/2)
-    ele.css 'top', (-1*height/2)+(viewHeight/2)
+    Session.set("field:canvas", "#" + ele.attr("id"))
 
   Deps.autorun ->
     Meteor.subscribe "fieldPosts", Session.get('current:field'),

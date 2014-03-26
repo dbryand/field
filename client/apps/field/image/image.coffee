@@ -1,14 +1,13 @@
 Template.image.rendered = ->
-  image = $(this.find(".image"))
+  unless @_rendered
+    @_rendered = true
 
-  random = Math.floor(Math.random() * 500)
-  random2 = Math.floor(Math.random() * 840)
-  image.css("top", "#{random}px")
-  image.css("left", "#{random2}px")
+    ele = $(@firstNode)
+    canvas = $(Session.get("field:canvas"))
+
+    FieldPositioner.centerElement ele, canvas
 
 Template.image.events =
   "mouseover .image, touchstart .image": (e) ->
     ele = $(e.currentTarget)
-    unless ele.data("isDraggable")
-      ele.data("isDraggable", true).draggable
-        distance: 3
+    FieldPositioner.enableFieldDraggable ele
