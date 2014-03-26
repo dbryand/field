@@ -4,6 +4,7 @@ Template.post.events
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
         distance: 3
+        containment: "parent"
 
 Template.post.rendered = ->
   unless @_rendered

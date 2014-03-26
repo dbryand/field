@@ -31,6 +31,9 @@ Template.field.events
   "click #field": (e, tmpl) ->
     #debugger
 
+Template.field.rendered = ->
+  $(@firstNode).fadeIn()
+
 # Field Canvas
 # ----------------------------------------------------------------
 Template.fieldCanvas.helpers
@@ -46,11 +49,18 @@ Template.fieldCanvas.events
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
         distance: 3
+        cursor: "pointer"
 
 Template.fieldCanvas.rendered = ->
   unless @_rendered
     @_rendered = true
-    #$(this.firstNode).draggable()
+    ele = $(@firstNode)
+
+    width  = ele.width()
+    height = ele.height()
+
+    ele.css('left', (width/2))
+    ele.css('top', (height/2))
 
   Deps.autorun ->
     Meteor.subscribe "fieldPosts", Session.get('current:field'),
