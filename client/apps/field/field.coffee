@@ -91,6 +91,7 @@ Template.closeField.events
 Template.trashField.events
   "click .trash": (evt, tmpl) ->
     Meteor.call "field:trash", Session.get('current:field')
+    Router.go "home"
 
 # Restore Field
 # ----------------------------------------------------------------

@@ -1,19 +1,25 @@
 <template name="home">
-  <div class="home">
+  <div id="home">
     {{> navigation}}
     <div class="row">
-      <div class="field col-md-4">
-        <a class="button new-field">+ New</a>
+      <div class="col-md-11 col-md-offset-1">
+        {{> newFieldNav}}
+        {{#each fields}}
+          {{> fieldNav}}
+        {{/each}}
       </div>
-      {{#each fields}}
-        {{> fields-nav}}
-      {{/each}}
     </div>
   </div>
 </template>
 
-<template name="fields-nav">
-  <div class="field col-md-4">
-    <a href="{{pathFor 'field'}}">{{name}}</a>
+<template name="newFieldNav">
+  <div class="field new-field">
+    <h3>+ New Field</h3>
+  </div>
+</template>
+
+<template name="fieldNav">
+  <div class="field">
+    <h3>{{name}}</h3>
   </div>
 </template>
