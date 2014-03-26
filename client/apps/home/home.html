@@ -2,7 +2,7 @@
   <div class="home">
     {{> navigation}}
     <div class="row">
-      <div class="field col-sm-4">
+      <div class="field col-md-4">
         <a class="button new-field">+ New</a>
       </div>
       {{#each fields}}
@@ -13,7 +13,7 @@
 </template>
 
 <template name="fields-nav">
-  <div class="field col-sm-4">
+  <div class="field col-md-4">
     <a href="{{pathFor 'field'}}">{{name}}</a>
   </div>
 </template>

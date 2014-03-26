@@ -7,8 +7,9 @@ Router.map ->
     path: '/'
     controller: HomeController
 
-Template.home.fields = ->
-  Fields.find {}
+Template.home.helpers
+  fields: ->
+    Fields.find {}
 
 Template.home.events =
   "click .new-field": (e, tmpl) ->

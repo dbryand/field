@@ -7,5 +7,8 @@ Template.image.rendered = ->
   image.css("left", "#{random2}px")
 
 Template.image.events =
-  "drag": (e, tmpl) ->
-    #debugger
+  "mouseover .image, touchstart .image": (e) ->
+    ele = $(e.currentTarget)
+    unless ele.data("isDraggable")
+      ele.data("isDraggable", true).draggable
+        distance: 3

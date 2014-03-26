@@ -1,33 +1,29 @@
 <template name="field">
-<div id="field">
-  <div class="row">
-      {{#with field}}
-        {{#if visible}}
-          <h1 class="name-editable editable" data-type="text">{{name}}</h1>
+  <div id="field">
+    {{#with field}}
+      {{> fieldTitle}}
+      {{> closeField}}
+      {{#if visible}}
+        {{> createPost}}
+        {{> trashField}}
+        {{> fieldCanvas}}
+      {{else}}
+        {{> restoreField}}
+      {{/if}}
+    {{/with}}
+  </div>
+</template>
 
-          {{#each posts}}
-            {{> post}}
-          {{/each}}
 
-          {{#each images}}
-            {{> image}}
-          {{/each}}
+<template name="fieldCanvas">
+  <div id="field-canvas">
+    {{#each posts}}{{> post}}{{/each}}
+    {{#each images}}{{> image}}{{/each}}
+  </div>
+</template>
 
-          {{> createPost}}
-          {{> trashField}}
-        {{else}}
-          <div class="col-md-8 col-md-offset-2 text-center">
-            <h2 class="_text-center">{{name}}</h2>
-              This Field is in the trash.<br>
-              {{> untrashField}}
-            </h2>
-          </div>
-        {{/if}}
-
-        {{> closeField}}
-      {{/with}}
-    </div>
-</div>
+<template name="fieldTitle">
+  <h1 class="name-editable editable" data-type="text">{{name}}</h1>
 </template>
 
 <template name="createPost">
@@ -42,6 +38,9 @@
   <a href="#" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
 </template>
 
-<template name="untrashField">
-  <a href="#" class="untrash">Restore it.</a>
+<template name="restoreField">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <h2 class="_text-center">{{name}}</h2>
+    <p>This Field is in the trash.<br><a href="#" class="restore">Restore it.</a></p>
+  </div>
 </template>

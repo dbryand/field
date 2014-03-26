@@ -24,7 +24,7 @@ Meteor.methods
       $set:
         trashed_at: new Date()
 
-  'field:untrash': (id) ->
+  'field:restore': (id) ->
     Fields.update id,
       $set:
         trashed_at: null

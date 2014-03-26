@@ -5,6 +5,7 @@
     "accounts-ui-bootstrap-3": {},
     "aws-sdk": {},
     "fast-render": {},
-    "scss": {}
+    "scss": {},
+    "jquery-ui": {}
   }
 }
