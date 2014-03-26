@@ -54,13 +54,17 @@ Template.fieldCanvas.events
 Template.fieldCanvas.rendered = ->
   unless @_rendered
     @_rendered = true
+    # Center Field
     ele = $(@firstNode)
 
     width  = ele.width()
     height = ele.height()
 
-    ele.css('left', (width/2))
-    ele.css('top', (height/2))
+    viewWidth = window.innerWidth
+    viewHeight = window.innerHeight
+
+    ele.css 'left', (-1*width/2)+(viewWidth/2)
+    ele.css 'top', (-1*height/2)+(viewHeight/2)
 
   Deps.autorun ->
     Meteor.subscribe "fieldPosts", Session.get('current:field'),
