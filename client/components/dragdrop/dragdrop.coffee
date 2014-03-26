@@ -92,7 +92,7 @@ onUploadSuccess = (file, url) ->
   progressElement().remove()
 
   # TODO: This is too incestuous...
-  Meteor.call "addImage", Session.get('current:field'),
+  Meteor.call "image:create", Session.get('current:field'),
     url: url
     size: file.size
     name: file.name

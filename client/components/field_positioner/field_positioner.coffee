@@ -27,9 +27,9 @@
   enableFieldDraggable: (ele) ->
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
-        addClasses:   false
         containment:  "parent"
         opacity:      .8
+        stack:        ".field-item"
 
   onFieldItemDragstop: (ele, callback) ->
     unless ele.data("hasDragstop")

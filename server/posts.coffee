@@ -4,14 +4,16 @@ Meteor.publish "fieldPosts", (fieldId) ->
   Posts.find fieldId: fieldId
 
 Meteor.methods
-  addPost: (fieldId, options) ->
+  "post:create": (fieldId, options) ->
     post =
-      userId:   Meteor.userId()
-      fieldId:  fieldId
-      text:     options.text
-      date:     new Date()
+      userId:     Meteor.userId()
+      fieldId:    fieldId
+      text:       options.text
+      date:       new Date()
+      positionX:  0
+      positionY:  0
 
     Posts.insert post
 
-  removePost: (id) ->
+  "post:delete": (id) ->
     Posts.remove _id: id

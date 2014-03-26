@@ -1,7 +1,12 @@
 Template.image.rendered = ->
+  console.log @
   @canvas = $(Session.get("field:canvas"))
   @ele = $(@firstNode)
   FieldPositioner.positionElement [@data.positionX, @data.positionY], @ele, @canvas
+
+Template.image.preserve
+  "img": (node) ->
+    node
 
 Template.image.events =
   "mouseover .field-image": (e) ->

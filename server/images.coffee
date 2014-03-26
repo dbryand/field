@@ -4,17 +4,19 @@ Meteor.publish "fieldImages", (fieldId) ->
   Images.find fieldId: fieldId
 
 Meteor.methods
-  addImage: (fieldId, options={}) ->
+  "image:create": (fieldId, options={}) ->
     image =
-      userId: Meteor.userId()
-      fieldId: fieldId
-      date:  new Date()
-      url:   options.url
-      size:  options.size
-      name:  options.name
-      type:  options.type
+      userId:     Meteor.userId()
+      fieldId:    fieldId
+      date:       new Date()
+      url:        options.url
+      size:       options.size
+      name:       options.name
+      type:       options.type
+      positionX:  0
+      positionY:  0
 
     Images.insert image
 
-  removeImage: (id) ->
+  "image:delete": (id) ->
     Images.remove _id: id

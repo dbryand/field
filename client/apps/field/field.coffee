@@ -86,7 +86,7 @@ Template.createPost.events
     if evt.which is 13
       post = tmpl.find("#create-post")
 
-      Meteor.call "addPost", Session.get('current:field'),
+      Meteor.call "post:create", Session.get('current:field'),
         text: post.value
 
       $(post).val("").select().focus()

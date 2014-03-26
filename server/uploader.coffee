@@ -18,10 +18,3 @@ Meteor.methods
           fut.return()
     fib.run()
     fut.wait()
-
-  uploadComplete: (file, url) ->
-    Meteor.call "addImage",
-      url: url
-      size: file.size
-      name: file.name
-      type: file.type
