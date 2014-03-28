@@ -1,0 +1,39 @@
+template(name='field')
+  #field.noshow
+    with field
+      +fieldTitle
+      +closeField
+      if visible
+        +createPost
+        +trashField
+        +fieldCanvas
+      else
+        +restoreField
+
+template(name='fieldCanvas')
+  #field-canvas
+    each posts
+      +fieldPost
+    each images
+      +fieldImage
+
+template(name='fieldTitle')
+  h1.name-editable.editable(data-type='text') #{name}
+
+template(name='createPost')
+  input#create-post.form-control(placeholder='Whats on your mind ?', type='text', name='posttext', value='')
+
+template(name='closeField')
+  button.close(type='button') ×
+
+template(name='trashField')
+  a.trash(href='#')
+    span.glyphicon.glyphicon-trash
+
+template(name='restoreField')
+  .col-md-8.col-md-offset-2.text-center
+    h2._text-center {{name}}
+    p
+      | This Field is in the trash.
+      br
+      a.restore(href='#') Restore it.

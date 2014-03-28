@@ -1,0 +1,10 @@
+template(name="post")
+  .row
+    .col-sm-10.col-sm-offset-1
+      #post
+        +closePost
+        h1 #{post.text}
+
+template(name='closePost')
+  with field
+    button.close(type='button') ×

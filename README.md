@@ -17,5 +17,4 @@
 
 ## Funkiness
 
-* Jade templates need to get loaded before coffee, so prefix with an underscore.
-  Keep an eye on this: https://github.com/SimonDegraeve/meteor-jade-handlebars/issues/13
+* Jade templates need to get loaded before coffee, so we suffix with .html

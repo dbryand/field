@@ -3,6 +3,11 @@ Meteor.publish "fieldByToken", (token) ->
 
   Fields.find token: token
 
+Meteor.publish "fieldById", (id) ->
+  check(id, String)
+
+  Fields.find _id: id
+
 Meteor.publish "fieldsForUser", (userId) ->
   check(userId, String)
 
