@@ -8,9 +8,6 @@ FieldController = FastRender.RouteController.extend
     if field = Fields.findOne(token: @params.token)
       Session.set('current:field', field._id)
 
-  onStop: ->
-    delete Session.keys['current:field']
-
 Router.map ->
   @route 'field',
     path: '/f/:token'

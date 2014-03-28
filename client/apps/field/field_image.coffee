@@ -1,10 +1,9 @@
-Template.image.rendered = ->
-  console.log @
+Template.fieldImage.rendered = ->
   @canvas = $(Session.get("field:canvas"))
   @ele = $(@firstNode)
   FieldPositioner.positionElement [@data.positionX, @data.positionY], @ele, @canvas
 
-Template.image.events =
+Template.fieldImage.events =
   "mouseover .field-image": (e) ->
     ele = $(e.currentTarget)
     FieldPositioner.enableFieldDraggable ele

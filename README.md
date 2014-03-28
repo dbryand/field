@@ -14,3 +14,8 @@
      # Open Chrome and navigate to:
      # http://localhost:8080/debug?port=5858
      # Debug like in browser
+
+## Funkiness
+
+* Jade templates need to get loaded before coffee, so prefix with an underscore.
+  Keep an eye on this: https://github.com/SimonDegraeve/meteor-jade-handlebars/issues/13

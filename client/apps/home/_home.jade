@@ -1,0 +1,15 @@
+template(name="home")
+  #home
+    {{> navigation}}
+    .row
+      .col-md-11.col-md-offset-1
+        {{> newFieldNav}}
+        {{#each fields}}{{> fieldNav}}{{/each}}
+
+template(name="newFieldNav")
+  .field.new-field
+    h3 + New Field
+
+template(name="fieldNav")
+  .field
+    h3 {{name}}

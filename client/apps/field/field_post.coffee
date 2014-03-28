@@ -12,6 +12,7 @@ Template.fieldPost.events
         $inc:
           positionX: position[0]
           positionY: position[1]
+
   "dblclick .field-post": (e) ->
     Router.go "post",
       token: @token
