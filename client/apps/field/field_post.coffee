@@ -1,9 +1,9 @@
-Template.post.rendered = ->
+Template.fieldPost.rendered = ->
   @canvas = $(Session.get("field:canvas"))
   @ele = $(@firstNode)
   FieldPositioner.positionElement [@data.positionX, @data.positionY], @ele, @canvas
 
-Template.post.events
+Template.fieldPost.events
   "mouseover .field-post": (e) ->
     ele = $(e.currentTarget)
     FieldPositioner.enableFieldDraggable ele
@@ -12,3 +12,6 @@ Template.post.events
         $inc:
           positionX: position[0]
           positionY: position[1]
+  "dblclick .field-post": (e) ->
+    Router.go "post",
+      token: @token

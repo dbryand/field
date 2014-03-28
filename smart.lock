@@ -2,15 +2,28 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "blaze-integration"
+      },
       "moment": {},
       "bootstrap-3": {},
-      "accounts-ui-bootstrap-3": {},
+      "accounts-ui-bootstrap-3": {
+        "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+        "branch": "blaze"
+      },
       "aws-sdk": {},
       "fast-render": {},
       "scss": {},
-      "jquery-ui": {}
+      "jquery-ui": {},
+      "jade": {}
     },
     "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "blaze-integration",
+        "commit": "947991731df164e56b53cfdae8ef23802d989142"
+      },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
@@ -23,8 +36,8 @@
       },
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.2.6",
-        "commit": "f3ee0ef6bc506314e19585550b4f9f5620c4ada6"
+        "branch": "blaze",
+        "commit": "f10f1bf86da1045eda2da7248f971cd7720d934f"
       },
       "aws-sdk": {
         "git": "https://github.com/peerlibrary/meteor-aws-sdk.git",
@@ -33,18 +46,28 @@
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.1.19",
-        "commit": "9e9a34e51885474c0dd9ed7a64dbff7ee9d4315c"
+        "tag": "v0.1.22",
+        "commit": "13c1d80bfd0366ad8d84f7a6ffa3cd9c21f9721e"
       },
       "scss": {
         "git": "https://github.com/fourseven/meteor-scss.git",
-        "tag": "v0.8.3",
-        "commit": "84fa8b09766e85a9e85b5606903f4222b7dd7605"
+        "tag": "v0.8.4",
+        "commit": "11af0da643944d241fe7d173af76162c4b670dee"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
         "tag": "v1.9.2",
         "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      },
+      "jade": {
+        "git": "https://github.com/mquandalle/meteor-jade.git",
+        "tag": "v0.1.5",
+        "commit": "bbb23ff955d94066b74c4aa9ea760418483b3ddf"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
       },
       "blocking": {
         "git": "https://github.com/peerlibrary/meteor-blocking.git",

@@ -11,14 +11,15 @@
     width: 2000px;
     height: 2000px;
     z-index: 10;
-    background: #fff;
+    background: #f5f5f5 url(/field-bg.png);
     box-shadow: 0px 0px 5px rgba(0, 0, 0, .6);
 
     .field-item{
       position: absolute;
     }
     .field-item.ui-draggable-dragging{
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, .7);
+      box-shadow: 0px 0px 50px rgba(0, 0, 0, .4);
+      cursor: move;
     }
   }
 

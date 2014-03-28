@@ -28,7 +28,6 @@
     unless ele.data("isDraggable")
       ele.data("isDraggable", true).draggable
         containment:  "parent"
-        opacity:      .8
         stack:        ".field-item"
 
   onFieldItemDragstop: (ele, callback) ->

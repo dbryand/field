@@ -4,11 +4,11 @@ FieldController = FastRender.RouteController.extend
   waitOn: ->
     Meteor.subscribe "fieldByToken", @params.token
 
-  load: ->
+  onRun: ->
     if field = Fields.findOne(token: @params.token)
       Session.set('current:field', field._id)
 
-  unload: ->
+  onStop: ->
     delete Session.keys['current:field']
 
 Router.map ->

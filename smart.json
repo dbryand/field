@@ -1,11 +1,19 @@
 {
   "packages": {
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "blaze-integration"
+    },
     "moment": {},
     "bootstrap-3": {},
-    "accounts-ui-bootstrap-3": {},
+    "accounts-ui-bootstrap-3": {
+      "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
+      "branch": "blaze"
+    },
     "aws-sdk": {},
     "fast-render": {},
     "scss": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "jade": {}
   }
 }
