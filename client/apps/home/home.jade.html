@@ -1,10 +1,11 @@
 template(name="home")
   #home
-    {{> navigation}}
+    +navigation
     .row
       .col-md-11.col-md-offset-1
-        {{> newFieldNav}}
-        {{#each fields}}{{> fieldNav}}{{/each}}
+        +newFieldNav
+        each fields
+          +fieldNav
 
 template(name="newFieldNav")
   .field.new-field
@@ -12,4 +13,4 @@ template(name="newFieldNav")
 
 template(name="fieldNav")
   .field
-    h3 {{name}}
+    h3 #{name}

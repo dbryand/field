@@ -91,7 +91,7 @@ Template.createPost.events
 # Close Field
 # ----------------------------------------------------------------
 Template.closeField.events
-  "click .close": (evt, tmpl) ->
+  "click .page-close": (evt, tmpl) ->
     Router.go('home')
 
 # Trash Field

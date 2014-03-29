@@ -7,7 +7,8 @@ PostController = FastRender.RouteController.extend
   onRun: ->
     if post = Posts.findOne(token: @params.token)
       Session.set 'current:post', post._id
-      Session.set 'current:field', post.fieldId
+      Meteor.call "field:token", post.fieldId, (err, data) ->
+        Session.set 'current:field:token', data
 
   onStop: ->
     delete Session.keys['current:post']
@@ -27,9 +28,14 @@ Template.post.helpers
   isEditingName: ->
     Session.get('editing:post:name')
 
- Template.post.events
-   "click .post-name": (evt, tmpl) ->
-      Session.set('editing:post:name', true)
+Template.post.events
+ "click .post-name": (evt, tmpl) ->
+    Session.set('editing:post:name', true)
+
+Template.post.rendered = ->
+  Mousetrap.bind 'esc', ->
+    Router.go 'field',
+      token: Session.get 'current:field:token'
 
 # Edit Post Name
 # ----------------------------------------------------------------
@@ -39,13 +45,19 @@ Template.editPostName.events
       field = tmpl.find("#post-name-field")
 
       success = ->
-        delete Session.keys['editing:post:name']
+        Session.set('editing:post:name', false)
 
       Meteor.call "post:update", Session.get('current:post'),
         name: field.value
       , success
 
       $(post).val("").select().focus()
+
+  "blur #post-name-field": (evt, tmpl) ->
+    Session.set('editing:post:name', false)
+
+Template.editPostName.rendered = ->
+  $(@firstNode).focus()
 
 # Close Post
 # ----------------------------------------------------------------
@@ -58,6 +70,6 @@ Template.closePost.rendered = ->
     Meteor.subscribe "fieldById", Session.get('current:field')
 
  Template.closePost.events
-   "click .close": (evt, tmpl) ->
+   "click .page-close": (evt, tmpl) ->
       Router.go 'field',
-        token: @token
+        token: Session.get 'current:field:token'
