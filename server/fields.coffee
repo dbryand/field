@@ -34,5 +34,8 @@ Meteor.methods
       $set:
         trashed_at: null
 
+  'field:token': (id) ->
+    Fields.findOne(_id: id).token
+
   'field:delete': (id) ->
     Fields.remove _id: id

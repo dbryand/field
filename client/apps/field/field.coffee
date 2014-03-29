@@ -29,6 +29,7 @@ Template.field.events
     #debugger
 
 Template.field.rendered = ->
+  debugger
   $(@firstNode).fadeIn()
 
 # Field Canvas

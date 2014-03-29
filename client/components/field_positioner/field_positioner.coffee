@@ -33,7 +33,6 @@
   onFieldItemDragstop: (ele, callback) ->
     unless ele.data("hasDragstop")
       ele.data("hasDragstop", true).on "dragstop", (e, ui) ->
-        console.log "drop"
         start = ui.originalPosition
         stop  = ui.position
 
