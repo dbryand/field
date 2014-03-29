@@ -24,69 +24,8 @@ Template.field.helpers
     # TODO: put this in a model.
     ! @trashed_at
 
-Template.field.events
-  "click #field": (e, tmpl) ->
-    #debugger
-
 Template.field.rendered = ->
-  $(@firstNode).fadeIn()
-
-# Field Canvas
-# ----------------------------------------------------------------
-Template.fieldCanvas.helpers
-  posts: ->
-    Posts.find fieldId: Session.get('current:field')
-
-  images: ->
-    Images.find fieldId: Session.get('current:field')
-
-Template.fieldCanvas.events
-  "mouseover #field-canvas, touchstart #field-canvas": (e) ->
-    ele = $(e.currentTarget)
-
-    unless ele.data("isDraggable")
-      ele.data('isDraggable', true).draggable
-        cursor: "pointer"
-        distance: 10
-    else
-
-Template.fieldCanvas.rendered = ->
-  unless @_rendered
-    @_rendered = true
-    # Center canvas
-    element = $(@firstNode)
-    container = $(window)
-    FieldPositioner.positionElement [0, 0], element, container
-
-    Session.set("field:canvas", "#" + element.attr("id"))
-
-  Deps.autorun ->
-    Meteor.subscribe "fieldPosts", Session.get('current:field'),
-    Meteor.subscribe "fieldImages", Session.get('current:field')
-
-# Field Title
-# ----------------------------------------------------------------
-Template.fieldTitle.rendered = ->
-  name = @find(".editable:not(.editable-click)")
-
-  $(name).editable("destroy").editable
-    success: (response, newValue) ->
-      # TODO: Make sure I want to be issuing queries from here...
-      Fields.update Session.get('current:field'),
-        $set:
-          name: newValue
-
-# Create Post
-# ----------------------------------------------------------------
-Template.createPost.events
-  "keyup #create-post": (evt, tmpl) ->
-    if evt.which is 13
-      post = tmpl.find("#create-post")
-
-      Meteor.call "post:create", Session.get('current:field'),
-        name: post.value
-
-      $(post).val("").select().focus()
+  $(@find("#field")).fadeIn()
 
 # Close Field
 # ----------------------------------------------------------------

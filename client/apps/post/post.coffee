@@ -51,8 +51,6 @@ Template.editPostName.events
         name: field.value
       , success
 
-      $(post).val("").select().focus()
-
   "blur #post-name-field": (evt, tmpl) ->
     Session.set('editing:post:name', false)
 

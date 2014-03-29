@@ -24,6 +24,12 @@ Meteor.methods
     id = Fields.insert field
     Fields.findOne _id: id
 
+  "field:update": (fieldId, update, success, error) ->
+    update = _.pick update, "name"
+    Fields.update _id: fieldId,
+      $set:
+        update
+
   'field:trash': (id) ->
     Fields.update id,
       $set:

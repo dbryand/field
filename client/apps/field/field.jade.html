@@ -1,27 +1,13 @@
 template(name='field')
+  +closeField
   #field.noshow
     with field
-      +fieldTitle
-      +closeField
+      +fieldName
       if visible
-        +createPost
         +trashField
         +fieldCanvas
       else
         +restoreField
-
-template(name='fieldCanvas')
-  #field-canvas
-    each posts
-      +fieldPost
-    each images
-      +fieldImage
-
-template(name='fieldTitle')
-  h1.name-editable.editable(data-type='text') #{name}
-
-template(name='createPost')
-  input#create-post.form-control(placeholder='Whats on your mind ?', type='text', name='posttext', value='')
 
 template(name='closeField')
   a.page-close(type='button') ×

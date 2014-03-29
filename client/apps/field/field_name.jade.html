@@ -1,0 +1,12 @@
+template(name='fieldName')
+  .field-name
+    if isEditingName
+      +editFieldName
+    else
+      +showFieldName
+
+template(name='editFieldName')
+  input(type="text" class="field-name-field" value=name)
+
+template(name='showFieldName')
+  h1.can-edit #{name}
