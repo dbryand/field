@@ -1,10 +1,19 @@
 template(name="post")
-  .row
-    .col-sm-10.col-sm-offset-1
-      #post
-        +closePost
-        h1 #{post.text}
+  with post
+    .row
+      .col-sm-10.col-sm-offset-1
+        #post
+          +closePost
+          if isEditingName
+            +editPostName
+          else
+            h1.post-name #{name}
 
-template(name='closePost')
+          p #{text}
+
+template(name="closePost")
   with field
-    button.close(type='button') ×
+    button.close(type="button") ×
+
+template(name="editPostName")
+  input(type="text" id="post-name-field" value=name)

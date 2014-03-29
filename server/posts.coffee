@@ -22,5 +22,10 @@ Meteor.methods
 
     Posts.insert post
 
+  "post:update": (postId, update, success, error) ->
+    Posts.update _id: postId,
+      $set:
+        update
+
   "post:delete": (id) ->
     Posts.remove _id: id

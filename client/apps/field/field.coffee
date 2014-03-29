@@ -84,7 +84,7 @@ Template.createPost.events
       post = tmpl.find("#create-post")
 
       Meteor.call "post:create", Session.get('current:field'),
-        text: post.value
+        name: post.value
 
       $(post).val("").select().focus()
 
