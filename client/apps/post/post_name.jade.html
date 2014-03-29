@@ -1,0 +1,12 @@
+template(name='postName')
+  .post-name
+    if isEditingName
+      +editPostName
+    else
+      +showPostName
+
+template(name='editPostName')
+  input(type="text" class="post-name-input" value=name)
+
+template(name='showPostName')
+  h1.can-edit #{name}

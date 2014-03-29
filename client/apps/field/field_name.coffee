@@ -11,9 +11,9 @@ Template.showFieldName.events
 # Edit
 # ----------------------------------------------------------------
 Template.editFieldName.events
-  "keyup .field-name-field": (evt, tmpl) ->
+  "keyup .field-name-input": (evt, tmpl) ->
     if evt.which is 13
-      name = tmpl.find(".field-name-field").value
+      name = tmpl.find(".field-name-input").value
 
       success = ->
         Session.set('editing:field:name', false)
@@ -22,7 +22,7 @@ Template.editFieldName.events
         name: name
       , success
 
-  "blur .field-name-field": (evt, tmpl) ->
+  "blur .field-name-input": (evt, tmpl) ->
     Session.set('editing:field:name', false)
 
 Template.editFieldName.rendered = ->

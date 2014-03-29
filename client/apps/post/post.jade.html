@@ -5,20 +5,10 @@ template(name="post")
       .col-md-12
         .row
           #post.col-md-8
-            if isEditingName
-              +editPostName
-            else
-              +postName
-
+            +postName
             p #{text}
           #post-tools.col-md-4
             h3 Date
 
 template(name="closePost")
   a.page-close(type="button") ×
-
-template(name="editPostName")
-  input(type="text" id="post-name-field" value=name)
-
-template(name="postName")
-  h1.post-name #{name}

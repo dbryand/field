@@ -1,3 +1,9 @@
+.field-name-common
+  font-size 18px
+  margin 0
+  line-height 1
+  padding 5px
+
 .field-name
   background #333
   color #fff
@@ -8,17 +14,10 @@
   margin 0
   z-index 20000
   h1
-    font-size 18px
-    margin 0
-    line-height 1
-    padding 5px
+    @extend .field-name-common
   input
+    @extend .field-name-common
     opacity .9
-    font-size 18px
-    margin 0
-    line-height 1
-    padding 5px
-
     background none
     border 0
     outline 0

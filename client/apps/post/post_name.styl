@@ -1,0 +1,18 @@
+.post-name-common
+  font-size 30px
+  padding 5px
+  font-weight normal
+  margin 0
+  line-height 1
+
+.post-name
+  h1
+    @extend .post-name-common
+
+  .post-name-input
+    @extend .post-name-common
+    width: 100%
+    border 0
+    &:focus
+      outline 0
+      border-bottom 1px solid #999
