@@ -29,7 +29,6 @@ Template.field.events
     #debugger
 
 Template.field.rendered = ->
-  debugger
   $(@firstNode).fadeIn()
 
 # Field Canvas
@@ -92,7 +91,7 @@ Template.createPost.events
 # Close Field
 # ----------------------------------------------------------------
 Template.closeField.events
-  "click .close": (evt, tmpl) ->
+  "click .page-close": (evt, tmpl) ->
     Router.go('home')
 
 # Trash Field

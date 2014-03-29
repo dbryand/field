@@ -1,17 +1,17 @@
 template(name="post")
-  .row
-    .col-md-12
-      with post
+  with post
+    +closePost
+    .row
+      .col-md-12
         .row
-          #post.col-md-9
+          #post.col-md-8
             if isEditingName
               +editPostName
             else
               +postName
 
             p #{text}
-          #post-tools.col-md-3
-            +closePost
+          #post-tools.col-md-4
             h3 Date
 
 template(name="closePost")

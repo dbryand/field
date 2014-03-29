@@ -72,4 +72,4 @@ Template.closePost.rendered = ->
  Template.closePost.events
    "click .page-close": (evt, tmpl) ->
       Router.go 'field',
-        token: @token
+        token: Session.get 'current:field:token'
