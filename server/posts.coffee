@@ -23,7 +23,7 @@ Meteor.methods
     Posts.insert post
 
   "post:update": (postId, update, success, error) ->
-    update = _.pick update, "name", "text"
+    update = _.pick update, "name", "body"
     Posts.update _id: postId,
       $set:
         update

@@ -26,5 +26,5 @@ Template.editPostName.events
     Session.set('editing:post:name', false)
 
 Template.editPostName.rendered = ->
-  $(@firstNode).focus()
+  $(@firstNode).select()
 
